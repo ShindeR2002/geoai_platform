@@ -1,0 +1,103 @@
+# GeoAI Platform — Processing Configuration
+# ------------------------------------------
+# Controls AOI definitions, object analysis thresholds, and pseudo-label
+# generation parameters. Loaded by geoai/core/config.py.
+
+# Root directory for all data files. Relative paths in AOI configurations
+# are resolved against this root.
+data_root: .
+
+# Minimum connected component area in pixels for an object to be retained
+# as a significant change detection result.
+# Source: Version 1 NB06 Cell 8, NB09 Cell 18. Default: 50.
+# Valid range: 1 — any positive integer (larger values suppress smaller objects).
+min_object_size_px: 50
+
+# Percentile range for contrast stretching during visualisation only.
+# These values are NOT applied to feature values used in model training or inference.
+# Source: Version 1 NB01 Cell 5.
+contrast_stretch_low_pct: 2.0
+contrast_stretch_high_pct: 98.0
+
+# Split policy used uniformally across classical ML and deep learning models.
+# Values: spatial (Spatial Block-Splitting), random (Random Stratified Splitting).
+split_policy: spatial
+
+# Pseudo-label generation parameters.
+# Used during training-mode pipeline runs to generate change mask labels
+# from the composite change score without human annotation.
+pseudo_labels:
+  # Per-feature weights for the composite change score.
+  # Weights must sum to 1.0.
+  # Source: Version 1 NB01 Cell 45. Do NOT modify without experimental revalidation.
+  weights:
+    sar: 0.35    # SAR VV change contribution
+    ndvi: 0.35   # NDVI change contribution
+    ndbi: 0.20   # NDBI change contribution
+    ndwi: 0.10   # NDWI change contribution
+
+  # Threshold multiplier applied to the standard deviation.
+  # Threshold = mean(change_score) + threshold_sigma * std(change_score).
+  # Source: Version 1 NB01 Cell 51. Default: 1.5.
+  # Higher values produce fewer (higher-confidence) pseudo-labels.
+  threshold_sigma: 1.5
+
+# Area of Interest (AOI) definitions.
+# Each AOI entry configures one processing location.
+# The platform can process multiple AOIs sequentially via Stage 3 batch pipeline.
+aois:
+  # -----------------------------------------------------------------------
+  # PS10 Training AOI
+  # Named 'PS10' in the platform. Corresponds to the unnamed urban location
+  # used in Version 1 Notebooks 01, 03, 04, 05.
+  # NOTE: reference_lat and reference_lon must be populated when the PS10
+  # organisers release the shortlisting dataset details on 31 Oct 2025.
+  # -----------------------------------------------------------------------
+  - name: PS10
+    t1_year: 2021
+    t2_year: 2024
+    data_dir: data/raw/PS10/EO
+    sensor_eo: sentinel2
+    sensor_sar: sentinel1
+    # crs: EPSG:32643  # Uncomment and set after metadata extraction
+    resolution_m: 10.0
+    # index_mode controls how spectral indices are sourced:
+    #   load    — Load precomputed NDVI/NDBI/NDWI rasters (default, Version 1 behaviour)
+    #   compute — Derive indices from raw Sentinel-2 band data
+    index_mode: load
+    # PS10 submission filename coordinates. Populated when dataset details are released.
+    reference_lat: null
+    reference_lon: null
+    file_patterns:
+      # File naming pattern for this AOI.
+      # {aoi} is replaced with the AOI name; {year} with the epoch year.
+      rgb: "{aoi}_RGB_{year}.tif"
+      sar_vv: "{aoi}_S1_VV_{year}.tif"
+      ndvi: "{aoi}_NDVI_{year}.tif"
+      ndbi: "{aoi}_NDBI_{year}.tif"
+      ndwi: "{aoi}_NDWI_{year}.tif"
+
+  # -----------------------------------------------------------------------
+  # Dholera Generalisation AOI
+  # Dholera Special Investment Region, Gujarat, India.
+  # Used in Version 1 Notebook 09 (Generalization Test).
+  # Serves as the primary regression test AOI.
+  # -----------------------------------------------------------------------
+  - name: Dholera
+    t1_year: 2021
+    t2_year: 2024
+    data_dir: data/raw/Dholera/EO
+    sensor_eo: sentinel2
+    sensor_sar: sentinel1
+    # crs: EPSG:32643  # Uncomment and set after metadata extraction
+    resolution_m: 10.0
+    index_mode: load
+    # Approximate centre coordinates for reference (Dholera SIR, Gujarat).
+    reference_lat: 22.4167
+    reference_lon: 72.1833
+    file_patterns:
+      rgb: "{aoi}_RGB_{year}.tif"
+      sar_vv: "{aoi}_S1_VV_{year}.tif"
+      ndvi: "{aoi}_NDVI_{year}.tif"
+      ndbi: "{aoi}_NDBI_{year}.tif"
+      ndwi: "{aoi}_NDWI_{year}.tif"

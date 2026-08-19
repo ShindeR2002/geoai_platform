@@ -1,0 +1,31 @@
+# GeoAI Platform — REST API Configuration
+# -----------------------------------------
+# Controls the FastAPI server for the Stage 3 platform API.
+# Loaded by geoai/core/config.py.
+
+# Network interface to bind the API server to.
+# Use '0.0.0.0' to accept connections from any interface (production).
+# Use '127.0.0.1' to accept local connections only (development).
+host: 0.0.0.0
+
+# Port number for the API server.
+port: 8000
+
+# Enable FastAPI debug mode. Must be false in production.
+# Debug mode exposes error tracebacks in API responses.
+debug: false
+
+# CORS (Cross-Origin Resource Sharing) origins allowed to access the API.
+# Use ["*"] to allow all origins (development only).
+# In production, restrict to the actual dashboard or frontend origin.
+cors_origins:
+  - "*"
+
+# FUTURE EXTENSION: Authentication configuration.
+# JWT-based authentication is architecturally prepared but not enforced.
+# When multi-user deployment begins, set auth.enabled: true and configure
+# the token signing secret via the GEOAI_JWT_SECRET environment variable.
+auth:
+  enabled: false
+  algorithm: HS256
+  token_expire_minutes: 60

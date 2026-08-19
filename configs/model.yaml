@@ -1,0 +1,33 @@
+# GeoAI Platform — Model Configuration
+# ---------------------------------------
+# Controls the machine learning model used for change detection inference.
+# Loaded by geoai/core/config.py.
+
+# Identifier for the production model. Must match the model_id in the
+# model metadata JSON file.
+model_id: rf_enhanced_v1
+
+# Path to the serialised model file (joblib-serialised RandomForestClassifier).
+# Relative to the working directory (project root).
+model_path: models/rf/rf_enhanced.pkl
+
+# Path to the model metadata JSON file.
+metadata_path: models/rf/rf_enhanced_meta.json
+
+# Expected number of input features. The inference engine validates this
+# before prediction and raises FeatureCountMismatchError if it does not match.
+# Source: Version 1 NB05. Must match CANONICAL_FEATURE_COUNT in constants.py.
+expected_feature_count: 18
+
+# Random Forest hyperparameters (for training new models).
+# These reproduce the Version 1 NB05 configuration exactly.
+# Do NOT change without experimental revalidation.
+n_estimators: 100   # Number of decision trees in the forest.
+random_state: 42    # Random seed for reproducibility.
+n_jobs: -1          # Use all available CPU cores during training/inference.
+
+# Class weighting strategy for the production RF Enhanced model.
+# null means no class weighting (Version 1 NB05 behaviour).
+# Set to "balanced" to activate automatic class weight adjustment
+# (this is the RF Baseline behaviour from NB04, not the production model).
+class_weight: null

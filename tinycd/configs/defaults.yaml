@@ -1,0 +1,16 @@
+# defaults.yaml
+# Common baseline parameters for TinyCD training framework refactor.
+epochs: 10
+batch_size: 16
+learning_rate: 0.001
+optimizer: "adam"
+scheduler: "cosine_annealing"
+weight_decay: 0.0001
+random_seed: 42
+dataset_id: "ps10_sentinel_v1"
+num_workers: 0
+mixed_precision: false
+early_stopping:
+  patience: 5
+max_samples: 0
+backbone: "lightweight"

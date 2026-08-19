@@ -1,0 +1,6 @@
+# smoke_test.yaml
+# Lightweight smoke test configuration overriding defaults.
+epochs: 1
+max_samples: 100
+early_stopping:
+  patience: 1

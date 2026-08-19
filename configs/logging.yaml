@@ -1,0 +1,26 @@
+# GeoAI Platform — Logging Configuration
+# ----------------------------------------
+# Controls the platform-wide logging infrastructure.
+# Loaded by geoai/core/logger.py at application startup.
+
+# Logging level for all platform loggers.
+# One of: DEBUG, INFO, WARNING, ERROR, CRITICAL
+# DEBUG produces very verbose output including array shapes and loop iterations.
+# INFO is the recommended level for production pipeline runs.
+level: INFO
+
+# Path to the log file. Relative paths are resolved from the working directory.
+# Set to null to disable file logging (console output is always active).
+file: outputs/logs/geoai_platform.log
+
+# Maximum size of a single log file in bytes before it is rotated.
+# Default: 10 MB (10_485_760 bytes).
+max_bytes: 10485760
+
+# Number of rotated log files to retain alongside the active log file.
+# e.g., backup_count: 5 keeps geoai_platform.log.1 through .5.
+backup_count: 5
+
+# If true, emit JSON-structured log records (for log aggregation systems).
+# If false, emit human-readable text (recommended for development).
+structured: false

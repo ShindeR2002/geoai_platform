@@ -1,0 +1,6 @@
+# debug.yaml
+# Debugging configuration overriding defaults.
+epochs: 1
+max_samples: 10
+early_stopping:
+  patience: 1

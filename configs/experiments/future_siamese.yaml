@@ -1,0 +1,20 @@
+experiment_id: "exp_siamese"
+description: "Siamese Networks (Siam-FullyConv) change detection (not yet implemented)"
+model:
+  model_id: "siamese"
+  hyperparameters:
+    batch_size: 16
+    learning_rate: 0.001
+    epochs: 40
+    random_state: 42
+dataset:
+  dataset_id: "dholera_sentinel_v1"
+  test_size: 0.20
+  random_state: 42
+baseline_lock:
+  inherit_preprocessing: false
+  inherit_feature_engineering: false
+  deviations:
+    - "Deep Learning model architecture (Siamese Convolutional)"
+    - "Alternative preprocessing of dual-epoch images"
+ablation: {}

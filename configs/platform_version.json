@@ -1,0 +1,19 @@
+{
+  "platform_version": "1.0",
+  "benchmark_version": "1.0",
+  "release_date": "2026-07-04",
+  "research_status": "Research Freeze",
+  "supported_models": [
+    "rf_baseline_v1",
+    "extra_trees",
+    "xgboost",
+    "lightgbm",
+    "catboost",
+    "tinycd",
+    "bit",
+    "changer",
+    "changeformer"
+  ],
+  "dataset_version": "ps10_sentinel_v1",
+  "compatibility_version": "1.0"
+}

@@ -1,0 +1,19 @@
+# GeoAI Platform — Dashboard Backend Configuration
+# --------------------------------------------------
+# Controls the dashboard integration layer (project management, layer registry,
+# report generation). The frontend application is not part of this repository.
+# Loaded by geoai/core/config.py.
+
+# Directory where project manifest JSON files are stored.
+# Each project creates one manifest file: {project_manifest_dir}/{project_id}.json
+project_manifest_dir: outputs/projects
+
+# Default AOI to display when the dashboard is first loaded.
+# Must match an AOI name defined in processing.yaml.
+# Leave empty to show no default AOI.
+default_aoi: ""
+
+# Format for raster tiles served to the frontend.
+# 'COG' — Cloud Optimised GeoTIFF (recommended for web map integration).
+# 'PNG' — Rendered PNG tiles (for simple web map overlays).
+tile_format: COG

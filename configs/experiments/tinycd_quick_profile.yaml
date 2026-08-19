@@ -1,0 +1,22 @@
+experiment_id: "dl_tinycd_quick_profile"
+description: "Quick Profile evaluation for TinyCD wrapper integration"
+model:
+  model_id: "tinycd"
+  hyperparameters:
+    batch_size: 16
+    learning_rate: 0.001
+    epochs: 1
+    patience: 1
+    random_state: 42
+dataset:
+  dataset_id: "ps10_sentinel_v1"
+  test_size: 0.20
+  random_state: 42
+features:
+  patch_size: 15
+baseline_lock:
+  inherit_preprocessing: true
+  inherit_feature_engineering: true
+  deviations:
+    - "Quick Profile execution run"
+ablation: {}

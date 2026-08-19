@@ -1,0 +1,4 @@
+# baseline.yaml
+# Production baseline parameters overriding defaults.
+epochs: 20
+max_samples: 0

@@ -1,0 +1,84 @@
+# Python Byte-compiled
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environments
+.env
+.env.local
+.env.production
+.env.development
+.env.staging
+.venv
+env/
+venv/
+
+# IDEs
+.vscode/
+.idea/
+
+# Temporary files and search caches
+scratch/
+.gemini/
+.agents/
+.pytest_cache/
+
+# Large binaries (PyTorch checkpoints, pickles, databases, geojson)
+*.pt
+*.pth
+*.pkl
+*.joblib
+*.dbf
+*.shp
+*.shx
+*.cpg
+*.db
+*.sqlite
+*.geojson
+
+# NumPy and Geospatial data
+*.npy
+*.npz
+*.tif
+*.tiff
+*.zip
+*.tar
+*.gz
+
+# Big run outputs, checkpoints and tb_logs
+outputs/experiments/dl_run_*/
+outputs/experiments/*/tb_logs/
+outputs/tinycd_execution/checkpoints/
+tinycd/outputs/
+
+# Local experimental run outputs
+outputs/campaign/
+outputs/research_v2/
+outputs/evaluation/EVAL_*/
+outputs/baseline_regeneration/
+catboost_info/
+
+# Generated model artifacts
+*.pkl
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.onnx
+*.npz
+
+# Generated experiment checkpoints
+**/checkpoints/
+
+# Generated export archives
+**/*.zip
+
+# Local Git history backup
+.git-history-backup/
+
+# Temporary Git diagnostics
+git_objects.txt
+
+# Generated experiment outputs
+outputs/

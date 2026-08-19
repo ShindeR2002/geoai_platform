@@ -1,0 +1,35 @@
+# Project-wide Reporting Standard Configuration
+version: "v1.0"
+
+evidence_levels:
+  A: "Directly Measured"
+  B: "Recomputed from measured data"
+  C: "Derived Statistics"
+  D: "Scientific Interpretation"
+
+confidence_levels:
+  - "Very High"
+  - "High"
+  - "Moderate"
+  - "Low"
+  - "Insufficient Evidence"
+
+tolerances:
+  absolute: 1e-6
+  relative: 1e-8
+
+hash_algorithm: "sha256"
+
+timestamp_format: "%Y-%m-%dT%H:%M:%SZ"
+
+provenance_rules:
+  require_source_csv: true
+  require_source_json: true
+  require_sha256: true
+
+artifact_naming_rules:
+  manifest: "artifact_manifest.json"
+  fingerprint: "configuration_fingerprint.json"
+  chatgpt_package: "chatgpt_review_package.md"
+  walkthrough: "walkthrough_report.md"
+  master_report: "master_sprint_report.md"

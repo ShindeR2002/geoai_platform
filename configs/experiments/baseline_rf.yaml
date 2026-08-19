@@ -1,0 +1,17 @@
+experiment_id: "exp_rf_baseline"
+description: "Random Forest Baseline Model using 14 per-epoch spectral and backscatter features (class_weight='balanced')"
+model:
+  model_id: "rf_baseline_v1"
+  hyperparameters:
+    n_estimators: 100
+    random_state: 42
+    n_jobs: -1
+dataset:
+  dataset_id: "dholera_sentinel_v1"
+  test_size: 0.20
+  random_state: 42
+baseline_lock:
+  inherit_preprocessing: true
+  inherit_feature_engineering: true
+  deviations: []
+ablation: {}

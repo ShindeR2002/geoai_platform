@@ -1,0 +1,20 @@
+experiment_id: "exp_changeformer"
+description: "ChangeFormer: Transformer-based change detection (not yet implemented)"
+model:
+  model_id: "changeformer"
+  hyperparameters:
+    batch_size: 8
+    learning_rate: 0.0001
+    epochs: 50
+    random_state: 42
+dataset:
+  dataset_id: "dholera_sentinel_v1"
+  test_size: 0.20
+  random_state: 42
+baseline_lock:
+  inherit_preprocessing: false
+  inherit_feature_engineering: false
+  deviations:
+    - "Deep Learning model architecture (Transformer)"
+    - "Deviates from pixel-based spectral-delta feature matrix"
+ablation: {}

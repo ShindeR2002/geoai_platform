@@ -1,0 +1,37 @@
+# GeoAI Platform — Feature Engineering Configuration
+# ---------------------------------------------------
+# Defines the canonical feature list used during feature cube assembly,
+# ML dataset preparation, and model inference validation.
+#
+# WARNING: The feature_names list and its order are FROZEN by the production
+# model (rf_enhanced.pkl). Modifying this list requires retraining the model.
+# Loaded by geoai/core/config.py.
+
+# Canonical ordered list of feature names.
+# The position of each name in this list corresponds to its column index
+# in the feature matrix passed to the model.
+# Source: Version 1 NB05/NB09. See Implementation Contract §2.2 F-02.
+feature_names:
+  # --- Group A: Epoch T1 features (7 features) ---
+  - Red_2021       # index 0  — Red band, epoch 2021
+  - Green_2021     # index 1  — Green band, epoch 2021
+  - Blue_2021      # index 2  — Blue band, epoch 2021
+  - SAR_2021       # index 3  — SAR VV, epoch 2021
+  - NDVI_2021      # index 4  — NDVI, epoch 2021
+  - NDBI_2021      # index 5  — NDBI, epoch 2021
+  - NDWI_2021      # index 6  — NDWI, epoch 2021
+
+  # --- Group B: Epoch T2 features (7 features) ---
+  - Red_2024       # index 7  — Red band, epoch 2024
+  - Green_2024     # index 8  — Green band, epoch 2024
+  - Blue_2024      # index 9  — Blue band, epoch 2024
+  - SAR_2024       # index 10 — SAR VV, epoch 2024
+  - NDVI_2024      # index 11 — NDVI, epoch 2024
+  - NDBI_2024      # index 12 — NDBI, epoch 2024
+  - NDWI_2024      # index 13 — NDWI, epoch 2024
+
+  # --- Group C: Temporal difference features (4 features) ---
+  - Delta_NDVI     # index 14 — NDVI_2024 - NDVI_2021
+  - Delta_NDBI     # index 15 — NDBI_2024 - NDBI_2021
+  - Delta_NDWI     # index 16 — NDWI_2024 - NDWI_2021
+  - Delta_SAR      # index 17 — SAR_2024  - SAR_2021

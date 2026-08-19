@@ -1,0 +1,19 @@
+experiment_id: "exp_catboost"
+description: "CatBoost classifier baseline"
+model:
+  model_id: "catboost"
+  hyperparameters:
+    iterations: 100
+    learning_rate: 0.1
+    depth: 6
+    random_state: 42
+dataset:
+  dataset_id: "dholera_sentinel_v1"
+  test_size: 0.20
+  random_state: 42
+baseline_lock:
+  inherit_preprocessing: true
+  inherit_feature_engineering: true
+  deviations:
+    - "Alternative model family: CatBoost gradient boosting model"
+ablation: {}

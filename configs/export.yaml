@@ -1,0 +1,29 @@
+# GeoAI Platform — Export Configuration
+# ----------------------------------------
+# Controls output file generation: formats, compression, naming conventions,
+# and PS10 submission packaging.
+# Loaded by geoai/core/config.py.
+
+# Root directory for all pipeline run outputs.
+# Each run creates a timestamped subdirectory: outputs/{run_id}/
+output_base_dir: outputs
+
+# GeoTIFF compression algorithm for output rasters.
+# 'lzw'  — Lossless, efficient for binary and integer rasters (recommended).
+# 'none' — No compression (largest files, fastest write).
+# 'deflate' — Alternative lossless algorithm.
+geotiff_compress: lzw
+
+# Character encoding for shapefile attribute tables.
+shapefile_encoding: utf-8
+
+# Prefix for PS10 submission output filenames.
+# PS10 convention: Change_Mask_{Lat}_{Long}.tif and Change_Mask_{Lat}_{Long}.shp
+ps10_submission_prefix: Change_Mask
+
+# Whether to export GeoJSON in addition to the shapefile.
+# GeoJSON is useful for web visualisation and API responses.
+include_geojson: true
+
+# Whether to export object statistics as a CSV file.
+include_csv: true

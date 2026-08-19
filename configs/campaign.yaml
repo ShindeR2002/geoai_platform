@@ -1,0 +1,12 @@
+# GeoAI Platform Scientific Campaign Configuration (Version 1.0)
+mode: "full"
+seeds:
+  - 42
+  - 123
+  - 456
+  - 789
+  - 2025
+models: "all"
+dataset_id: "ps10_sentinel_v1"
+force: false
+output_dir: "outputs/campaign"
